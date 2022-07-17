@@ -9,3 +9,6 @@ dev-up: dev-build
 
 build:
 	@go build -o ./bin/order
+
+tests:
+	@go test -v -race ./...
