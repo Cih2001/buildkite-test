@@ -1,5 +1,5 @@
 steps:
-  - label: ":info: Print info"
+  - label: ":information_source: Print info"
     command: "./.buildkite/scripts/info.sh"
   - block: ":golang: test"
   - label: ":golang: Running linters."
