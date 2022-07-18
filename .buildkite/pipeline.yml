@@ -1,3 +1,5 @@
 steps:
   - label: ":rocket: tests"
-    command: make tests
+    command: 
+    - docker build -t order:dev -f ./dockerfiles/development/Dockerfile .
+    - docker-compose run order-service make tests
