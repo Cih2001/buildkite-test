@@ -1,8 +1,7 @@
 steps:
   - label: ":info: Print info"
     command: "./.buildkite/scripts/info.sh"
-  - trigger: 
-    label: "continue"
+  - block: ":golang: test"
   - label: ":golang: Running linters."
     command: "./.buildkite/scripts/format.sh"
   - label: ":golang: Running unit tests."
