@@ -35,3 +35,8 @@ echo "   deployment id: $BUILDKITE_GITHUB_DEPLOYMENT_ID"
 echo "   deployment env: $BUILDKITE_GITHUB_DEPLOYMENT_ENVIRONMENT"
 echo "   task: $BUILDKITE_GITHUB_DEPLOYMENT_TASK"
 echo "   payload: $BUILDKITE_GITHUB_DEPLOYMENT_PAYLOAD"
+
+
+echo ""
+echo "general: "
+echo "   service name: $SERVICE_NAME"
