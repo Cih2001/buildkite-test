@@ -22,7 +22,7 @@ echo "   number: $BUILDKITE_BUILD_NUMBER"
 echo "   path: $BUILDKITE_BUILD_PATH"
 echo "   url: $BUILDKITE_BUILD_URL"
 echo "   command: $BUILDKITE_COMMAND"
-echo "   tag: $ BUILDKITE_TAG"
+echo "   tag: $BUILDKITE_TAG"
 
 echo ""
 echo "artifacts: "
