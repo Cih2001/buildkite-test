@@ -1,4 +1,5 @@
-#!/bin/sh
+#!/bin/bash
+set -o errexit
 
 docker build -t order:dev -f ./dockerfiles/development/Dockerfile .
 docker run -it order:dev ./scripts/lint.sh

@@ -1,3 +1,8 @@
 steps:
-  - label: ":golang: Running linters"
+  - label: ":golang: Running linters."
     command: "./.buildkite/scripts/format.sh"
+  - label: ":golang: Running unit tests."
+    command: "./.buildkite/scripts/test.sh 'unit'"
+  - label: ":golang: Running integration tests."
+    command: "./.buildkite/scripts/test.sh 'integration'"
+

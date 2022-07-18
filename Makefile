@@ -11,5 +11,8 @@ dev-up: dev-build
 build:
 	@go build -o ./bin/order
 
-tests:
+tests-unit:
+	@go test -v -race ./...
+
+tests-integration:
 	@go test -v -race ./...

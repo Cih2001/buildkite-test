@@ -14,7 +14,7 @@ import (
 
 var id uuid.UUID = uuid.New()
 
-type TempStrcut struct{}
+// type TempStrcut struct{}
 
 func connectDB() *gorm.DB {
 	dbAddress := os.Getenv("POSTGRES_ADDR")
