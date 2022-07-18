@@ -1,0 +1,30 @@
+run:
+  timeout: 10m
+
+linters:
+  disable-all: true
+  enable:
+    - gofumpt
+    - staticcheck
+    - revive
+    - godot
+    - goimports
+    - whitespace
+    - lll
+
+linters-settings:
+  staticcheck:
+    go: "1.18"
+    checks: [ "all" ]
+  godot:
+    scope: declarations
+    capital: true
+  goimports:
+    local-prefixes: server/
+  lll:
+    line-length: 120
+
+issues:
+  exclude-use-default: false
+  fix: true
+

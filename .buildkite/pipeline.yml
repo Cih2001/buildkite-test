@@ -1,5 +1,3 @@
 steps:
-  - label: ":rocket: tests"
-    command: 
-    - docker build -t order:dev -f ./dockerfiles/development/Dockerfile .
-    - docker-compose run order-service make tests
+  - label: ":golang: Running linters"
+    command: "./.buildkite/scripts/format.sh"
