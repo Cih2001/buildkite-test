@@ -11,4 +11,4 @@ fi
 
 docker build -t $SERVICE_NAME:$TAG -f ./dockerfiles/development/Dockerfile .
 docker tag $SERVICE_NAME:$TAG $IMAGE_REGISTRY_PATH/$SERVICE_NAME:$TAG  
-docker push $SERVICE_NAME:$TAG $IMAGE_REGISTRY_PATH/$SERVICE_NAME:$TAG  
+docker push $IMAGE_REGISTRY_PATH/$SERVICE_NAME:$TAG  
