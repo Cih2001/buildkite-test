@@ -5,7 +5,7 @@ steps:
     command: "./scripts/lint.sh"
   - block: ":golang: test"
   - label: ":golang: Running unit tests."
-    command: "./.buildkite/scripts/test.sh 'unit'"
+    command: "./scripts/test.sh 'unit'"
   - label: ":golang: Running integration tests."
-    command: "./.buildkite/scripts/test.sh 'integration'"
+    command: "./scripts/test.sh 'integration'"
 

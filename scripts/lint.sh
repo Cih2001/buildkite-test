@@ -2,10 +2,10 @@
 set -o errexit
 
 source ./scripts/config.sh
-echo $SERVICE_NAME
 
 if [ -z ${BUILDKITE+x} ]; then
   # it is running in the host machine.
+  print "running linters"
   golangci-lint run --fix ./...
 else 
   # it is triggered from pipeline.
