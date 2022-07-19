@@ -19,5 +19,6 @@ function print(){
 }
 
 function login_docker() {
+  printf "logging in into gcp container registry"
   cat ~/.config/docker/keyfile.json | docker login -u _json_key --password-stdin https://$IMAGE_REGISTRY_BASE
 }
