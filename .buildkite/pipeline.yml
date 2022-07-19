@@ -1,9 +1,11 @@
 steps:
   - label: ":information_source: Print info"
     command: "./.buildkite/scripts/info.sh"
+  - label: ":docker: Build and push development image"
+    command: "./scripts/build_dev_image.sh"
+  - block: ":golang: test"
   - label: ":golang: Running linters."
     command: "./scripts/lint.sh"
-  - block: ":golang: test"
   - label: ":golang: Running unit tests."
     command: "./scripts/test.sh 'unit'"
   - label: ":golang: Running integration tests."
