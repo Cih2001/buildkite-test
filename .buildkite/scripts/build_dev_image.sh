@@ -10,6 +10,8 @@ source ./.buildkite/scripts/common.sh
 login_docker
 
 TAG=dev-$BUILDKITE_BUILD_NUMBER
+print "building image $TAG"
 docker build -t $SERVICE_NAME:$TAG -f ./dockerfiles/development/Dockerfile .
 docker tag $SERVICE_NAME:$TAG $IMAGE_REGISTRY_PATH/$SERVICE_NAME:$TAG  
+print "pushing image $TAG to gcp container registry"
 docker push $IMAGE_REGISTRY_PATH/$SERVICE_NAME:$TAG  

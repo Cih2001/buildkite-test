@@ -9,5 +9,6 @@ source ./.buildkite/scripts/common.sh
 
 login_docker
 
+print "running linters"
 TAG=dev-$BUILDKITE_BUILD_NUMBER
 docker run -it $IMAGE_REGISTRY_PATH/$SERVICE_NAME:$TAG ./bin/golangci-lint run ./...
