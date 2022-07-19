@@ -13,12 +13,12 @@ else
   # it is triggered from pipeline.
   if [ $1 == "unit" ]; then
     print 'running unit tests'
-    docker build -t order:dev -f ./dockerfiles/development/Dockerfile .
-    docker run -it order:dev go test -v -race ./...
+    docker build -t $SERVICE_NAME:dev-$BUILDKITE_BUILD_NUMBER -f ./dockerfiles/development/Dockerfile .
+    docker run -it $SERVICE_NAME:dev-$BUILDKITE_BUILD_NUMBER go test -v -race ./...
   elif [ $1 == "integration" ]; then
     print 'running integration tests'
-    docker build -t order:dev -f ./dockerfiles/development/Dockerfile .
-    docker run -it order:dev go test -v -race -tags=integration ./...
+    docker build -t $SERVICE_NAME:dev-$BUILDKITE_BUILD_NUMBER -f ./dockerfiles/development/Dockerfile .
+    docker run -it $SERVICE_NAME:dev-$BUILDKITE_BUILD_NUMBER go test -v -race -tags=integration ./...
   else
     exit 1
   fi
