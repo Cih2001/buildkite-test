@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 SERVICE_NAME=order
-IMAGE_REGISTRY_PATH=eu.gcr.io/cih-kubernetes-test-3
+IMAGE_REGISTRY_BASE=eu.gcr.io
+IMAGE_REGISTRY_PATH=$IMAGE_REGISTRY_BASE/cih-kubernetes-test-3
