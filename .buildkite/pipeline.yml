@@ -6,6 +6,7 @@ steps:
   - wait
   - label: ":golang: Running linters."
     command: "./.buildkite/scripts/lint.sh"
+  - wait
   - label: ":golang: Running unit tests."
     command: "./.buildkite/scripts/test.sh 'unit'"
   - label: ":golang: Running integration tests."
