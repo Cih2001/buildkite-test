@@ -15,7 +15,7 @@ TEXT_INVERSE="\e[7m"
 TEXT_DEFAULT="\e[27m"
 
 function print(){
-  printf "${TEXT_INVERSE}${COLOR_WHITE} %10b ${COLOR_GREEN} %-75b ${COLOR_WHITE}${COLOR_DEFAULT}${RESET}\n" "$(basename "$0")" "$1"
+  printf "${TEXT_INVERSE}${COLOR_WHITE} %b ${COLOR_GREEN} %-75b ${COLOR_WHITE}${COLOR_DEFAULT}${RESET}\n" "$(basename "$0")" "$1"
 }
 
 function login_docker() {
