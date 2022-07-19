@@ -9,6 +9,7 @@ if [ -z ${BUILDKITE+x} ]; then
   golangci-lint run --fix ./...
 else 
   # it is triggered from pipeline.
-  docker build -t $SERVICE_NAME:dev-$BUILDKITE_BUILD_NUMBER -f ./dockerfiles/development/Dockerfile .
-  docker run -it $SERVICE_NAME:dev-$BUILDKITE_BUILD_NUMBER ./bin/golangci-lint run ./...
+  cat ~/.config/docker/keyfile.json | docker login -u _json_key --password-stdin https://eu.gcr.io
+  TAG=dev-$BUILDKITE_BUILD_NUMBER
+  docker run -it $IMAGE_REGISTRY_PATH/$SERVICE_NAME:$TAG ./bin/golangci-lint run ./...
 fi
