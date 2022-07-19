@@ -2,6 +2,7 @@
 set -o errexit;
 
 source ./scripts/config.sh
+source ./.buildkite/scripts/common.sh
 
 if [ -z ${BUILDKITE+x} ]; then
   # it is running in the host machine.
