@@ -3,9 +3,10 @@ steps:
     command: "./.buildkite/scripts/info.sh"
   - label: ":docker: Build and push development image"
     command: "./.buildkite/scripts/build_dev_image.sh"
-  - block: ":golang: test"
+  - wait
   - label: ":golang: Running linters."
     command: "./.buildkite/scripts/lint.sh"
+    parallelism: 3
   - label: ":golang: Running unit tests."
     command: "./.buildkite/scripts/test.sh 'unit'"
   - label: ":golang: Running integration tests."
