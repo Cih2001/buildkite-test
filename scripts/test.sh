@@ -11,14 +11,14 @@ if [ -z ${BUILDKITE+x} ]; then
   go test -v -race -tags=integration ./...
 else
   # it is triggered from pipeline.
+  cat ~/.config/docker/keyfile.json | docker login -u _json_key --password-stdin https://eu.gcr.io
+  TAG=dev-$BUILDKITE_BUILD_NUMBER
   if [ $1 == "unit" ]; then
     print 'running unit tests'
-    docker build -t $SERVICE_NAME:dev-$BUILDKITE_BUILD_NUMBER -f ./dockerfiles/development/Dockerfile .
-    docker run -it $SERVICE_NAME:dev-$BUILDKITE_BUILD_NUMBER go test -v -race ./...
+    docker run -it $IMAGE_REGISTRY_PATH/$SERVICE_NAME:$TAG go test -v -race ./...
   elif [ $1 == "integration" ]; then
     print 'running integration tests'
-    docker build -t $SERVICE_NAME:dev-$BUILDKITE_BUILD_NUMBER -f ./dockerfiles/development/Dockerfile .
-    docker run -it $SERVICE_NAME:dev-$BUILDKITE_BUILD_NUMBER go test -v -race -tags=integration ./...
+    docker run -it $IMAGE_REGISTRY_PATH/$SERVICE_NAME:$TAG go test -v -race -tags=integration ./...
   else
     exit 1
   fi
