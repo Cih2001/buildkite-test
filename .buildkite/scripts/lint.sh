@@ -9,13 +9,6 @@ source ./.buildkite/scripts/common.sh
 
 login_docker
 
+print "running linters"
 TAG=dev-$BUILDKITE_BUILD_NUMBER
-if [ $1 == "unit" ]; then
-  print 'running unit tests'
-  docker run -it $IMAGE_REGISTRY_PATH/$SERVICE_NAME:$TAG go test -v -race ./...
-elif [ $1 == "integration" ]; then
-  print 'running integration tests'
-  docker run -it $IMAGE_REGISTRY_PATH/$SERVICE_NAME:$TAG go test -v -race -tags=integration ./...
-else
-  exit 1
-fi
+docker run -it $IMAGE_REGISTRY_PATH/$SERVICE_NAME:$TAG ./bin/golangci-lint run ./...

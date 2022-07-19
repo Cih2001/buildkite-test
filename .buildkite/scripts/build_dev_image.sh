@@ -10,12 +10,8 @@ source ./.buildkite/scripts/common.sh
 login_docker
 
 TAG=dev-$BUILDKITE_BUILD_NUMBER
-if [ $1 == "unit" ]; then
-  print 'running unit tests'
-  docker run -it $IMAGE_REGISTRY_PATH/$SERVICE_NAME:$TAG go test -v -race ./...
-elif [ $1 == "integration" ]; then
-  print 'running integration tests'
-  docker run -it $IMAGE_REGISTRY_PATH/$SERVICE_NAME:$TAG go test -v -race -tags=integration ./...
-else
-  exit 1
-fi
+print "building image $TAG"
+docker build -t $SERVICE_NAME:$TAG -f ./dockerfiles/development/Dockerfile .
+docker tag $SERVICE_NAME:$TAG $IMAGE_REGISTRY_PATH/$SERVICE_NAME:$TAG  
+print "pushing image $TAG to gcp container registry"
+docker push $IMAGE_REGISTRY_PATH/$SERVICE_NAME:$TAG  
